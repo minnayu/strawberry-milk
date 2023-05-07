@@ -1,25 +1,5 @@
-const fetch = require("node-fetch");
 const apiKey = process.env.LASTFM_TOKEN;
 const rootURL = 'http://ws.audioscrobbler.com/2.0';
-const Fuse = require("fuse.js");
-
-// // Handles errors.
-// async function error(channel, errorTitle, errorDescription) {
-//     return channel.send({ embeds: [
-//         {
-//             title: `❌ error: ${errorTitle}`,
-//             description: `<:banana_milk:1045928025654575194> ${errorDescription}`,
-//             color: '0xff0000',
-//             thumbnail: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/HAL9000.svg/1024px-HAL9000.svg.png'}
-//         }
-//     ]});
-// }
-
-// // Get Last.FM username from DB by Discord user ID.
-// async function lfmGetUsername(userID, db) {
-//     let dbEntry = await Promise.resolve(db.db('BananaMilk').collection('users').findOne({ userID: userID }));
-//     return dbEntry?.lastFMUser;
-// }
 
 // Gets the User object from Last.FM API.
 async function lfmGetUser(lastFMUser) {
