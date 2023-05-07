@@ -1,7 +1,7 @@
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 const apiKey = process.env.LASTFM_TOKEN;
 const rootURL = 'http://ws.audioscrobbler.com/2.0';
-const Fuse = require("fuse.js");
+// const Fuse = require("fuse.js");
 
 // // Handles errors.
 // async function error(channel, errorTitle, errorDescription) {
@@ -25,6 +25,8 @@ const Fuse = require("fuse.js");
 async function lfmGetUser(lastFMUser) {
     let response = await fetch(`${rootURL}/?method=user.getinfo&user=${lastFMUser}&api_key=${apiKey}&format=json`);
     let data = await response.json();
+    // console.log(data);
+    // console.log(data.user);
     return data.user;
 }
 
@@ -72,44 +74,44 @@ async function lfmGetTop(lastFMUser, period, type) {
     if (type == 'albums') return data.topalbums.album;
 }
 
-// Gets specified artist info.
-async function lfmArtistSearch(artist) {
-    let response = await fetch(`${rootURL}/?method=artist.search&artist=${artist}&api_key=${apiKey}&format=json`);
-    let data = await response.json();
-    const options = {
-        includeScore: true,
-        keys: ['name']
-    }
-    const fuse = new Fuse(data.results.artistmatches.artist, options)
-    const result = fuse.search(artist);
-    return result[0].item;
-}
+// // Gets specified artist info.
+// async function lfmArtistSearch(artist) {
+//     let response = await fetch(`${rootURL}/?method=artist.search&artist=${artist}&api_key=${apiKey}&format=json`);
+//     let data = await response.json();
+//     const options = {
+//         includeScore: true,
+//         keys: ['name']
+//     }
+//     const fuse = new Fuse(data.results.artistmatches.artist, options)
+//     const result = fuse.search(artist);
+//     return result[0].item;
+// }
 
-// Gets specified track info.
-async function lfmTrackSearch(track, artist) {
-    let response = await fetch(`${rootURL}/?method=track.search&track=${track}&artist=${artist}&api_key=${apiKey}&format=json`);
-    let data = await response.json();
-    const options = {
-        includeScore: true,
-        keys: ['name']
-    }
-    const fuse = new Fuse(data.results.trackmatches.track, options)
-    const result = fuse.search(track);
-    return result[0].item;
-}
+// // Gets specified track info.
+// async function lfmTrackSearch(track, artist) {
+//     let response = await fetch(`${rootURL}/?method=track.search&track=${track}&artist=${artist}&api_key=${apiKey}&format=json`);
+//     let data = await response.json();
+//     const options = {
+//         includeScore: true,
+//         keys: ['name']
+//     }
+//     const fuse = new Fuse(data.results.trackmatches.track, options)
+//     const result = fuse.search(track);
+//     return result[0].item;
+// }
 
-// Gets specified album info
-async function lfmAlbumSearch(album, artist) {
-    let response = await fetch(`${rootURL}/?method=album.search&album=${album}&artist=${artist}&api_key=${apiKey}&format=json`);
-    let data = await response.json();
-    const options = {
-        includeScore: true,
-        keys: ['name']
-    }
-    const fuse = new Fuse(data.results.albummatches.album, options)
-    const result = fuse.search(album);
-    return result[0].item;
-}
+// // Gets specified album info
+// async function lfmAlbumSearch(album, artist) {
+//     let response = await fetch(`${rootURL}/?method=album.search&album=${album}&artist=${artist}&api_key=${apiKey}&format=json`);
+//     let data = await response.json();
+//     const options = {
+//         includeScore: true,
+//         keys: ['name']
+//     }
+//     const fuse = new Fuse(data.results.albummatches.album, options)
+//     const result = fuse.search(album);
+//     return result[0].item;
+// }
 
 // module.exports = { error, lfmGetUsername, lfmGetUser, lfmGetRecent, lfmGetNowPlaying, lfmGetTrackInfo, lfmGetArtistInfo, lfmGetAlbumInfo, lfmGetTop, lfmArtistSearch, lfmTrackSearch, lfmAlbumSearch }
-module.exports = { lfmGetUser, lfmGetRecent, lfmGetNowPlaying, lfmGetTrackInfo, lfmGetArtistInfo, lfmGetAlbumInfo, lfmGetTop, lfmArtistSearch, lfmTrackSearch, lfmAlbumSearch }
+module.exports = { lfmGetUser, lfmGetRecent, lfmGetNowPlaying, lfmGetTrackInfo, lfmGetArtistInfo, lfmGetAlbumInfo, lfmGetTop }
