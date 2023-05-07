@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const apiKey = '01fd4f0ae70dbaa242f5894527ac6073';
+const apiKey = process.env.LASTFM_TOKEN;
 const rootURL = 'http://ws.audioscrobbler.com/2.0';
 const Fuse = require("fuse.js");
 
