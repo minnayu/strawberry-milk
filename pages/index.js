@@ -6,7 +6,7 @@ const { lfmGetUser } = require('../functions.js')
 
 export default function Home() {
   const [username, setUsername] = useState('');
-  const [data, setData] = useState('');
+  const [data, setData] = useState({});
   const [noUserEntered, setNoUserEntered] = useState(true);
 
   const handleUsernameChange = (event) => {
@@ -15,10 +15,10 @@ export default function Home() {
 
   const handleSetUsernameClick = async () => {
     // do something with the username, e.g. make an API call
-    const newUsername = await lfmGetUser(username);
-    setUsername(newUsername.name);
-    console.log(`Setting username to: ${newUsername.name}`);
-    // setData(newUsername);
+    const newUser = await lfmGetUser(username);
+    setUsername(newUser.name);
+    console.log(`Setting username to: ${newUser.name}`);
+    setData(newUser);
     setNoUserEntered(false);
   };
 
@@ -50,7 +50,7 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        <p>{username}</p>
+        <p>{JSON.stringify(data)}</p>
       ) }
       </Layout>
     </div>
