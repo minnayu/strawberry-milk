@@ -7,6 +7,7 @@ const { lfmGetUser } = require('../functions.js')
 export default function Home() {
   const [username, setUsername] = useState('');
   const [data, setData] = useState('');
+  const [noUserEntered, setNoUserEntered] = useState(true);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -18,11 +19,13 @@ export default function Home() {
     setUsername(newUsername.name);
     console.log(`Setting username to: ${newUsername.name}`);
     // setData(newUsername);
+    setNoUserEntered(false);
   };
 
   return (
     <div>
       <Layout>
+      { noUserEntered ? (
         <div className="container is-flex is-justify-content-flex-start">
           <Head>
             <title>Get Started</title>
@@ -45,8 +48,10 @@ export default function Home() {
           <button className="button is-medium is-link" onClick={handleSetUsernameClick}>
             Set Username
           </button>
-          {/* <Strawberry data={data} /> */}
         </div>
+      ) : (
+        <p>{username}</p>
+      ) }
       </Layout>
     </div>
   );
