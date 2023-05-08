@@ -2091,7 +2091,7 @@ table th {
     font-size: 1.5rem; }
 
 .navbar {
-  background-color: white;
+  background-color: #ffbccc;
   min-height: 3.25rem;
   position: relative;
   z-index: 30; }
@@ -2589,7 +2589,7 @@ body.has-navbar-fixed-bottom {
   overflow-y: hidden; }
 
 .navbar-burger {
-  color: #757763;
+  color: #8A4D76;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -2632,7 +2632,7 @@ body.has-navbar-fixed-bottom {
 
 .navbar-item,
 .navbar-link {
-  color: #757763;
+  color: #8A4D76;
   display: block;
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
@@ -2714,7 +2714,7 @@ a.navbar-item,
   .navbar-link::after {
     display: none; }
   .navbar-menu {
-    background-color: white;
+    background-color: #ffbccc;
     box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
     padding: 0.5rem 0; }
     .navbar-menu.is-active {

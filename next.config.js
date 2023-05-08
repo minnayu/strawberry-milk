@@ -5,6 +5,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  env: {
+    LASTFM_TOKEN: process.env.LASTFM_TOKEN
+  }
 }
 
 module.exports = nextConfig

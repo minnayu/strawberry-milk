@@ -26,6 +26,10 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
+$navbar-background-color: #ffbccc;
+$navbar-item-color: $purple;
+
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";

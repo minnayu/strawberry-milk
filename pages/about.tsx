@@ -1,15 +1,15 @@
 import Link from 'next/link'
+import Layout from '../components/Layout'
 import { Container, Main, Title, Description } from '../components/sharedstyles'
 
 export default function About() {
   return (
-    <Container>
-      <Main>
-        <Title>About Page</Title>
-        <Description>
-          <Link href="/">&larr; Go Back</Link>
-        </Description>
-      </Main>
-    </Container>
+    <Layout>
+      <Container>
+        <Main>
+          <p>hi</p>
+        </Main>
+      </Container>
+    </Layout>
   )
 }
