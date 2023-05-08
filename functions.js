@@ -5,6 +5,7 @@ const rootURL = 'http://ws.audioscrobbler.com/2.0';
 async function lfmGetUser(lastFMUser) {
     let response = await fetch(`${rootURL}/?method=user.getinfo&user=${lastFMUser}&api_key=${apiKey}&format=json`);
     let data = await response.json();
+    console.log(data)
     return data.user;
 }
 

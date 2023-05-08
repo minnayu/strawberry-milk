@@ -5,5 +5,5 @@ export default async function request(req, res) {
 
     let data = await lfmGetUser('chriswonton');
 
-    res.status(200).json(data.name);
+    res.status(200).json(data);
 }
