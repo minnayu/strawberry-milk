@@ -1,16 +1,22 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import Strawberry from '../components/Strawberry'
+const { lfmGetUser} = require('../functions.js')
 
 export default function Home() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
+  const [data, setData] = useState('');
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
 
-  const handleSetUsernameClick = () => {
+  const handleSetUsernameClick = async () => {
     // do something with the username, e.g. make an API call
-    console.log(`Setting username to: ${username}`);
+    const newUsername = await lfmGetUser(username);
+    setUsername(newUsername);
+    console.log(`Setting username to: ${newUsername}`);
+    setData(newUsername);
   };
 
   return (
@@ -33,9 +39,10 @@ export default function Home() {
           />
         </div>
       </div>
-      <button class="button is-medium is-link" onClick={handleSetUsernameClick}>
+      <button className="button is-medium is-link" onClick={handleSetUsernameClick}>
         Set Username
       </button>
+      {/* <Strawberry data={data} /> */}
     </div>
   );
 }
