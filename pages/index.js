@@ -45,12 +45,12 @@ export default function Home() {
               />
             </div>
           </div>
-          <button className="button is-medium is-link" onClick={handleSetUsernameClick}>
-            Set Username
-          </button>
+          <button
+            className="button is-medium is-link"
+            onClick={handleSetUsernameClick}> Enter </button>
         </div>
       ) : (
-        <p>{JSON.stringify(data)}</p>
+        <Strawberry data={data}/>
       ) }
       </Layout>
     </div>
