@@ -7,11 +7,9 @@ export default function FMHeader ( { data } ) {
     
     return (
         <Wrapper>
-            <h1>{allData}</h1>
+            {/* <h1>{allData}</h1> */}
             <div class="hero-body">
-                <p class="title">
-                User Data
-                </p>
+                <StyledImage src={userData.image[2]["#text"]}/>
             </div>
             <div class="hero-body">
                 <div>
@@ -50,3 +48,11 @@ const Wrapper = styled.main`
     align-items: center;
     padding: 30px max(10px, 10%);
 `
+
+const StyledImage = styled.img`
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+`;
