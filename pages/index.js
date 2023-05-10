@@ -4,9 +4,12 @@ import Strawberry from '../components/Strawberry'
 import Layout from '../components/Layout';
 const { lfmGetUser } = require('../functions.js')
 
+
+const fetcher = url => fetch(url).then(r => r.json())
+
 export default function Home() {
   const [username, setUsername] = useState('');
-  const [data, setData] = useState({});
+  const [userData, setUserData] = useState({});
   const [noUserEntered, setNoUserEntered] = useState(true);
 
   const handleUsernameChange = (event) => {
@@ -14,13 +17,15 @@ export default function Home() {
   };
 
   const handleSetUsernameClick = async () => {
-    // do something with the username, e.g. make an API call
+    // get username using API call 
     const newUser = await lfmGetUser(username);
     setUsername(newUser.name);
     console.log(`Setting username to: ${newUser.name}`);
-    setData(newUser);
+    setUserData(newUser);
     setNoUserEntered(false);
   };
+
+ 
 
   return (
     <div>
@@ -50,7 +55,7 @@ export default function Home() {
             onClick={handleSetUsernameClick}> Enter </button>
         </div>
       ) : (
-        <Strawberry data={data}/>
+        <Strawberry data={userData}/>
       ) }
       </Layout>
     </div>

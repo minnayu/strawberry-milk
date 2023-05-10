@@ -8,6 +8,6 @@ const nextConfig = {
   env: {
     LASTFM_TOKEN: process.env.LASTFM_TOKEN
   }
-}
+} 
 
 module.exports = nextConfig
