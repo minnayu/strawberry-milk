@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Strawberry from '../components/Strawberry'
-import Layout from '../components/Layout';
-const { lfmGetUser } = require('../functions.js')
-
+import Navbar from '../components/Navbar';
+import useSWR from 'swr'
 
 const fetcher = url => fetch(url).then(r => r.json())
 
@@ -16,9 +15,19 @@ export default function Home() {
     setUsername(event.target.value);
   };
 
+  const { data, error } = useSWR(`/api/user/${username}`, fetcher)
+
+  // TODO:
+  // if api encounters an error, this will render
+  // if (error) {
+  //   return <Main>
+      
+  //   </Main>
+  // }
+
   const handleSetUsernameClick = async () => {
     // get username using API call 
-    const newUser = await lfmGetUser(username);
+    const newUser = data
     setUsername(newUser.name);
     console.log(`Setting username to: ${newUser.name}`);
     setUserData(newUser);
@@ -26,10 +35,9 @@ export default function Home() {
   };
 
  
-
   return (
     <div>
-      <Layout>
+      <Navbar>
       { noUserEntered ? (
         <div className="container is-flex is-justify-content-flex-start">
           <Head>
@@ -57,7 +65,7 @@ export default function Home() {
       ) : (
         <Strawberry data={userData}/>
       ) }
-      </Layout>
+      </Navbar>
     </div>
   );
 }

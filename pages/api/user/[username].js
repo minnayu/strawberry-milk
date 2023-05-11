@@ -1,4 +1,4 @@
-const { lfmGetUser } = require('../../functions.js');
+const { lfmGetUser } = require('../../../functions.js');
 
 export default async function handler(req, res) {
     const { username } = req.query;

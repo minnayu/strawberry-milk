@@ -4,10 +4,10 @@ import styled from "styled-components";
 export default function FMHeader ( { userData } ) {
     // add nowplaying
     return (
-        <div class="section">
+        <div>
             <Wrapper>
                 <div class="hero-body">
-                    <StyledImage src={userData.image[3]["#text"]} style={{height: "70%", width: "70%"}}/>
+                    <StyledImage src={userData.image[2]["#text"]} style={{height: "70%", width: "70%"}}/>
                     {/* <Wrapper>    */}
                         <h1 class="subtitle" style={{color:"black"}}>{userData.name}</h1>
                     {/* </Wrapper> */}

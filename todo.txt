@@ -1,0 +1,12 @@
+1. Using same user as parameter for each api call
+- gets user from main page
+- username is set
+- how to get other API data involving specified username (recenttracks, friends)
+
+2. navbar hover over elements instead of shifting page
+
+
+
+
+
+
