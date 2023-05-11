@@ -2,23 +2,15 @@ import React, { useEffect, useState } from 'react';
 const { lfmGetRecent } = require('../functions.js');
 
 
-const TabContent = ({ activeTab }) => {
-    const [recentTracks, setRecentTracks] = useState({})
+const TabContent = ({ activeTab, userData }) => {
+    const [recentTracks, setRecentTracks] = useState(userData.recentTracks)
     
-    // get recent from API pages not function
-    const handleGetRecent = async () => {
-        setRecentTracks(await lfmGetRecent('minan_'))
-    };
-    
-    useEffect(() => {
-        handleGetRecent();
-    }, []);
     
     switch (activeTab) {
         case 'tracks':
             return (
                 <div class="container">
-                    {/* <div class="columns is-multiline">
+                    <div class="columns is-multiline">
                     {recentTracks.map((track, index) => (
                         <div class="column is-one-third" key={index}>
                         <div class="card">
@@ -36,7 +28,7 @@ const TabContent = ({ activeTab }) => {
                         </div>
                         </div>
                     ))}
-                    </div> */}
+                    </div>
                 </div>
                 );              
         case 'artists':
@@ -65,7 +57,7 @@ const TabContent = ({ activeTab }) => {
   }
 };
 
-const Tabs = () => {
+const Tabs = (userData) => {
   const [activeTab, setActiveTab] = useState('tracks');
 
   return (
@@ -92,7 +84,7 @@ const Tabs = () => {
         </li>
       </ul>
     </div>
-    <TabContent activeTab={activeTab}/>
+    <TabContent activeTab={activeTab} userData={userData}/>
     </div>
   );
 };

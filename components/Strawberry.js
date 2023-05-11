@@ -12,9 +12,8 @@ export default function Strawberry ( { data } ) {
         <div>
             <FMHeader userData={userData}/>
             <Wrapper>
-                <Tabs/>
-                
-                <FriendActivity/>
+                <Tabs userData={userData}/>
+                <FriendActivity user={userData.name}/>
             </Wrapper>
         </div>
     );
@@ -24,7 +23,7 @@ const Wrapper = styled.main`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    padding: 30px max(10px, 10%);
+    padding: 50px max(10px, 10%);
 `

@@ -5,6 +5,8 @@
 
 2. navbar hover over elements instead of shifting page
 
+3. each time a letter is typed, api data is fetching
+
 
 
 

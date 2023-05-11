@@ -34,7 +34,6 @@ export default function Home() {
     setNoUserEntered(false);
   };
 
- 
   return (
     <div>
       <Navbar>

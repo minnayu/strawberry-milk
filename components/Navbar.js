@@ -1,24 +1,21 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function Navbar({ children }) {
+const Navbar = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const toggleMenu = () => {
-    setIsActive(!isActive);
-  };
+  const toggleMenu = () => setIsActive(!isActive);
 
   return (
     <div>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
           <a
             role="button"
-            class={`navbar-burger burger ${isActive ? 'is-active' : ''}`}
+            className={`navbar-burger burger ${isActive ? 'is-active' : ''}`}
             aria-label="menu"
             aria-expanded="false"
             data-target="strawberryNavbar"
-            onMouseEnter={toggleMenu}
-            onMouseLeave={toggleMenu}
+            onClick={toggleMenu}
           >
             <span></span>
             <span></span>
@@ -26,13 +23,13 @@ function Navbar({ children }) {
           </a>
         </div>
 
-        <div id="strawberryNavbar" class={`navbar-menu ${isActive ? 'is-active' : ''}`}>
-          <div class="navbar-start">
-            <a class="navbar-item" href="/">
+        <div id="strawberryNavbar" className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
+          <div className="navbar-start">
+            <a className="navbar-item" href="/">
               Home
             </a>
 
-            <a class="navbar-item" href="/about">
+            <a className="navbar-item" href="/about">
               About Us
             </a>  
           </div>
@@ -41,6 +38,6 @@ function Navbar({ children }) {
       {children}
     </div>
   );
-}
+};
 
 export default Navbar;
