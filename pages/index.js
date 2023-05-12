@@ -17,20 +17,19 @@ export default function Home() {
 
   const { data, error } = useSWR(`/api/user/${username}`, fetcher)
 
-  // TODO:
-  // if api encounters an error, this will render
-  // if (error) {
-  //   return <Main>
-      
-  //   </Main>
-  // }
+  if (error) {
+    return <div>Error occurred: {error.message}</div>;
+  }
+  
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   const handleSetUsernameClick = async () => {
     // get username using API call 
     const newUser = data
     setUsername(newUser.name);
     console.log(`Setting username to: ${newUser.name}`);
-    setUserData(newUser);
     setNoUserEntered(false);
   };
 

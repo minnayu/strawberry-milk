@@ -4,6 +4,7 @@ import styled from "styled-components";
 export default function FMHeader ( { userData } ) {
     // add nowplaying
     return (
+       
         <div>
             <Wrapper>
                 <div class="hero-body">

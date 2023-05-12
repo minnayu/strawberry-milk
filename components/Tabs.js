@@ -3,15 +3,14 @@ const { lfmGetRecent } = require('../functions.js');
 
 
 const TabContent = ({ activeTab, userData }) => {
-    const [recentTracks, setRecentTracks] = useState(userData.recentTracks)
-    
     
     switch (activeTab) {
         case 'tracks':
             return (
                 <div class="container">
+                    <p>{JSON.stringify(userData.userData.recentTracks)}</p>
                     <div class="columns is-multiline">
-                    {recentTracks.map((track, index) => (
+                    {userData.userData.recentTracks.map((track, index) => (
                         <div class="column is-one-third" key={index}>
                         <div class="card">
                             <div class="card-content">

@@ -5,15 +5,12 @@ import Tabs from './Tabs';
 import FriendActivity from './FriendActivity';
 
 export default function Strawberry ( { data } ) {
-    const userData = JSON.parse(JSON.stringify(data))
-    // change to fetch user data using API?
-
     return (
         <div>
-            <FMHeader userData={userData}/>
+            <FMHeader userData={data}/>
             <Wrapper>
-                <Tabs userData={userData}/>
-                <FriendActivity user={userData.name}/>
+                <Tabs userData={data}/>
+                {/* <FriendActivity user={data.name}/> */}
             </Wrapper>
         </div>
     );
