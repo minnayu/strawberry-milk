@@ -8,24 +8,28 @@ const TabContent = ({ activeTab, userData }) => {
         case 'tracks':
             return (
                 <div class="container">
-                    <p>{JSON.stringify(userData.userData.recentTracks)}</p>
                     <div class="columns is-multiline">
                     {userData.userData.recentTracks.map((track, index) => (
-                        <div class="column is-one-third" key={index}>
-                        <div class="card">
+                      <div class="column" key={index}>
+                        <div class="card is-flex">
                             <div class="card-content">
+                              <div class="card-image">
+                                <figure class="image is-64x64">
+                                  <img src="https://bulma.io/images/placeholders/64x64.png" alt="Placeholder image"/>
+                                </figure>
+                              </div>
                             <div class="media">
                                 <div class="media-content">
                                 <p class="title is-4">{track.name}</p>
                                 <p class="subtitle is-6">{track.artist["#text"]}</p>
                                 </div>
                             </div>
-                            <div class="content">
+                            {/* <div class="content">
                                 <p>Play count: {track.playcount}</p>
-                            </div>
+                            </div> */}
                             </div>
                         </div>
-                        </div>
+                      </div>
                     ))}
                     </div>
                 </div>

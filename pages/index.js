@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Strawberry from '../components/Strawberry'
 import Navbar from '../components/Navbar';
 import useSWR from 'swr'
@@ -15,23 +15,27 @@ export default function Home() {
     setUsername(event.target.value);
   };
 
-  const { data, error } = useSWR(`/api/user/${username}`, fetcher)
-
-  if (error) {
-    return <div>Error occurred: {error.message}</div>;
-  }
-  
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
   const handleSetUsernameClick = async () => {
-    // get username using API call 
-    const newUser = data
-    setUsername(newUser.name);
-    console.log(`Setting username to: ${newUser.name}`);
+    // set the user data after setting the username
+    setUserData(await fetchUserData(username));
+    console.log(`Setting username to: ${username}`);
     setNoUserEntered(false);
   };
+
+  const fetchUserData = async (username) => {
+    const res = await fetch(`/api/${username}`)
+    return res.json()
+  }
+
+  useEffect(() => {
+    if (username) {
+      // fetch user data once the username has been set
+      const fetchData = async () => {
+        setUserData(await fetchUserData(username));
+      };
+      fetchData();
+    }
+  }, [username]);
 
   return (
     <div>

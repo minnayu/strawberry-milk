@@ -1,8 +1,10 @@
-1. add check for data before rendering 
+- navbar hover over elements instead of shifting page
 
-2. navbar hover over elements instead of shifting page
+- each time a letter is typed, api data is fetching (?)
 
-3. each time a letter is typed, api data is fetching
+- style recent tracks list
+
+- get track info for each track to get image...
 
 
 
