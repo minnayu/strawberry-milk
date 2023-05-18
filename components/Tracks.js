@@ -14,20 +14,20 @@ export default function Tracks({ userData }) {
                 <div className="box is-flex is-justify-content-flex-start">
                   <article className="media">
                     <figure className="media-left">
-                      <p className="image is-16x16">
                         <img src={track.image} alt="Placeholder image" />
-                      </p>
                     </figure>
                   </article>
                   <div className="container">
                       <div className="content">
-                        <p class="has-text-primary m-6 is-size-3">
+                        <p class="has-text-primary ml-6 mt-5 is-size-3">
                           <a href={track.url} target="_blank"><strong>{track.name}</strong></a> <br />
                         </p>
-                        <p className="has-text-primary m-6 is-size-4">
+                        <p className="has-text-primary ml-6 mt-1 is-size-4">
                           {track.artist}
                         </p>
-                        <p class="has-text-primary m-6 is-size-5"> <i>{track.playcount} scrobbles </i></p>
+                        <p class="has-text-primary ml-6 pt-5 is-size-5"> 
+                          <i>{track.playcount} scrobbles </i>
+                        </p>
                       </div>
                     </div>
                 </div>

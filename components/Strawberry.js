@@ -25,7 +25,7 @@ const Wrapper = styled.main`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start; /* set align-items to flex-start */
-    padding: 50px max(10px, 10%);
+    // padding: 50px max(10px, 10%);
 `;
 
 const TabsWrapper = styled.div`

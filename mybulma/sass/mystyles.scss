@@ -13,6 +13,8 @@ $beige-lighter: #EFF0EB;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
+$family-primary: $family-sans-serif;
+$body-family: $family-sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $purple;
@@ -44,6 +46,10 @@ a {
         color: $link-hover;
     }
 }
+
+// .html {
+//     font-family: $family-sans-serif;
+// }
 
 .hover {
     transition: transform 0.3s ease;

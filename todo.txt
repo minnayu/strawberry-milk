@@ -1,10 +1,6 @@
-- navbar hover over elements instead of shifting page
+- navbar shifting page
 
-- each time a letter is typed, api data is fetching (?) (idk)
-
-- style recent tracks list
-
-- keep user data on screen on refresh instead of taking back to home 
+- keep image size consistent on page resize
 
 - update top track buttons to update info based on what button selected
 (7 days, month, year)
