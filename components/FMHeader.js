@@ -8,10 +8,10 @@ export default function FMHeader ( { userData } ) {
         <div>
             <Wrapper>
                 <div class="hero-body">
-                    <StyledImage src={userData.image[2]["#text"]} style={{height: "70%", width: "70%"}}/>
-                    {/* <Wrapper>    */}
+                    <ImageWrapper>
+                        <StyledImage src={userData.image[2]["#text"]} style={{height: "70%", width: "70%"}}/>
                         <h1 class="subtitle" style={{color:"black"}}>{userData.name}</h1>
-                    {/* </Wrapper> */}
+                    </ImageWrapper>
                 </div>
                 <div class="hero-body">
                     <div>
@@ -47,14 +47,22 @@ const Wrapper = styled.main`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    // padding: 30px max(10px, 10%);
+`
+
+const ImageWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 `
 
 const StyledImage = styled.img`
   width: 100%;
-  max-width: 500px;
+  max-width: 100%
   height: auto;
   border-radius: 50%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
