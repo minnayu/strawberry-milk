@@ -64,21 +64,35 @@ async function lfmGetAlbumInfo(lastFMUser, artist, album) {
 async function lfmGetTop(lastFMUser, period, type) {
     let response = await fetch(`${rootURL}/?method=user.gettop${type}&user=${lastFMUser}&period=${period}&api_key=${apiKey}&format=json`);
     let data = await response.json();
-    // console.log(data);
+
     if (type == "tracks") {
-        return data.toptracks.track.map((track) => ({
-          name: track.name,
-          artist: track.artist.name,
-          url: track.url,
-          playcount: track.playcount,
+        return Promise.all(
+          data.toptracks.track.map(async (track) => {
+            let trackInfo = await lfmGetTrackInfo(lastFMUser, track.artist.name, track.name);
+            let trackImage = 'https://icons-for-free.com/download-icon-last+last+fm+lastfm+logo+icon-1320183868072439373_128.ico';
+            if (trackInfo.album) trackImage = trackInfo.album.image[2]['#text']
+            return {
+              name: track.name,
+              artist: track.artist.name,
+              url: track.url,
+              playcount: track.playcount,
+              image: trackImage
+            };
         }));
-      }
+    }      
     if (type == "artists") {
-        return data.topartists.artist.map((artist) => ({
-            name: artist.name,
-            playcount: artist.playcount,
-            url: artist.url,
-        }));
+        return Promise.all(
+            data.topartists.artist.map(async (artist) => {
+            let artistInfo = await lfmGetArtistInfo(lastFMUser, artist.name);
+            let artistImage = 'https://icons-for-free.com/download-icon-last+last+fm+lastfm+logo+icon-1320183868072439373_128.ico';
+            if (artistInfo.image) artistImage = artistInfo.image[2]['#text'];
+            return {
+                name: artist.name,
+                playcount: artist.playcount,
+                url: artist.url,
+                image: artistImage
+            };
+         }));
     }
     // if (type == 'artists') return data.topartists.artist;
     if (type == 'albums') return data.topalbums.album;
