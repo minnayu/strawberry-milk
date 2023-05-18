@@ -2,9 +2,6 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Strawberry from '../components/Strawberry'
 import Navbar from '../components/Navbar';
-import useSWR from 'swr'
-
-const fetcher = url => fetch(url).then(r => r.json())
 
 export default function Home() {
   const [username, setUsername] = useState('');

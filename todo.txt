@@ -1,11 +1,13 @@
 - navbar hover over elements instead of shifting page
 
-- each time a letter is typed, api data is fetching (?)
+- each time a letter is typed, api data is fetching (?) (idk)
 
 - style recent tracks list
 
-- get track info for each track to get image...
+- keep user data on screen on refresh instead of taking back to home 
 
+- update top track buttons to update info based on what button selected
+(7 days, month, year)
 
 
 

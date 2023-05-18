@@ -13,7 +13,24 @@ async function lfmGetUser(lastFMUser) {
 async function lfmGetRecent(lastFMUser) {
     let response = await fetch(`${rootURL}/?method=user.getrecenttracks&user=${lastFMUser}&api_key=${apiKey}&format=json`);
     let data = await response.json();
-    return data.recenttracks.track;
+    let tracks = data.recenttracks.track;
+    let trackData = [];
+
+    for (let i = 0; i < tracks.length; i++) {
+      let track = tracks[i];
+      let artist = track.artist["#text"];
+      let name = track.name;
+      let image = track.image[2]["#text"];
+      let nowplaying = false;
+
+        if (track.hasOwnProperty("@attr") && track["@attr"].nowplaying) {
+            nowplaying = true;
+        }
+
+        trackData.push({ artist, name, image, nowplaying });
+    }
+  
+    return trackData;
 }
 
 // Gets a user's now playing track.
@@ -48,8 +65,22 @@ async function lfmGetTop(lastFMUser, period, type) {
     let response = await fetch(`${rootURL}/?method=user.gettop${type}&user=${lastFMUser}&period=${period}&api_key=${apiKey}&format=json`);
     let data = await response.json();
     // console.log(data);
-    if (type == 'tracks') return data.toptracks.track;
-    if (type == 'artists') return data.topartists.artist;
+    if (type == "tracks") {
+        return data.toptracks.track.map((track) => ({
+          name: track.name,
+          artist: track.artist.name,
+          url: track.url,
+          playcount: track.playcount,
+        }));
+      }
+    if (type == "artists") {
+        return data.topartists.artist.map((artist) => ({
+            name: artist.name,
+            playcount: artist.playcount,
+            url: artist.url,
+        }));
+    }
+    // if (type == 'artists') return data.topartists.artist;
     if (type == 'albums') return data.topalbums.album;
 }
 
