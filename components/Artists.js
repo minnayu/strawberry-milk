@@ -16,7 +16,7 @@ export default function Artists({ userData }) {
                     <div className="media-content">
                       <div className="content">
                         <p class="has-text-link">
-                          <a href={artist.url}><strong>{artist.name}</strong></a> <br />
+                          <a href={artist.url} target="_blank"><strong>{artist.name}</strong></a> <br />
                         </p>
                         <p> <i>{artist.playcount} scrobbles </i></p>
                       </div>

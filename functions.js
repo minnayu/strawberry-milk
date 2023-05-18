@@ -19,6 +19,7 @@ async function lfmGetRecent(lastFMUser) {
     for (let i = 0; i < tracks.length; i++) {
       let track = tracks[i];
       let artist = track.artist["#text"];
+      let url = track.url
       let name = track.name;
       let image = track.image[2]["#text"];
       let nowplaying = false;
@@ -27,7 +28,7 @@ async function lfmGetRecent(lastFMUser) {
             nowplaying = true;
         }
 
-        trackData.push({ artist, name, image, nowplaying });
+        trackData.push({ artist, url, name, image, nowplaying });
     }
   
     return trackData;

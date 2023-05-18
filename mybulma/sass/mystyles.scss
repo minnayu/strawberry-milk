@@ -32,8 +32,16 @@ $navbar-item-color: $purple;
 $tabs-border-bottom-color: $pink;
 
 $card-background-color: $pink;
-// $progress-value-background-color: $pink;
+$link-hover: $purple;
 
+a {
+    color: $link;
+    transition: color 0.3s ease; // Add a smooth transition effect
+
+    &:hover {
+        color: $link-hover;
+    }
+}
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";

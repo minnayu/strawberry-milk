@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+a {
+  color: #FA7C91;
+  transition: color 0.3s ease; }
+  a:hover {
+    color: #8A4D76; }
+
 /* Bulma Utilities */
 .button, .input, .textarea, .select select, .file-cta,
 .file-name {
@@ -212,7 +218,7 @@ a {
   a strong {
     color: currentColor; }
   a:hover {
-    color: #363636; }
+    color: #8A4D76; }
 
 code {
   background-color: whitesmoke;
@@ -310,7 +316,7 @@ table th {
     margin-right: calc(-0.5em - 2px); }
   .button:hover, .button.is-hovered {
     border-color: #D0D1CD;
-    color: #363636; }
+    color: #8A4D76; }
   .button:focus, .button.is-focused {
     border-color: #485fc7;
     color: #363636; }

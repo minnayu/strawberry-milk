@@ -20,8 +20,8 @@ export default function Tracks({ userData }) {
                     </figure> */}
                     <div className="media-content">
                       <div className="content">
-                        <p>
-                          <strong>{track.name}</strong> <br />
+                        <p class="has-text-link">
+                          <a href={track.url} target="_blank"><strong>{track.name}</strong></a> <br />
                           {track.artist}
                         </p>
                         <p> <i>{track.playcount} scrobbles </i></p>
