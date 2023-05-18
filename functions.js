@@ -19,6 +19,7 @@ async function lfmGetRecent(lastFMUser) {
     for (let i = 0; i < tracks.length; i++) {
       let track = tracks[i];
       let artist = track.artist["#text"];
+      let url = track.url
       let name = track.name;
       let image = track.image[2]["#text"];
       let nowplaying = false;
@@ -27,7 +28,7 @@ async function lfmGetRecent(lastFMUser) {
             nowplaying = true;
         }
 
-        trackData.push({ artist, name, image, nowplaying });
+        trackData.push({ artist, url, name, image, nowplaying });
     }
   
     return trackData;
@@ -60,6 +61,7 @@ async function lfmGetAlbumInfo(lastFMUser, artist, album) {
     return data.album;
 }
 
+// Gets top tracks per user.
 // Gets top tracks per user.
 async function lfmGetTop(lastFMUser, period, type) {
     let response = await fetch(`${rootURL}/?method=user.gettop${type}&user=${lastFMUser}&period=${period}&api_key=${apiKey}&format=json`);
@@ -96,7 +98,7 @@ async function lfmGetTop(lastFMUser, period, type) {
     }
     // if (type == 'artists') return data.topartists.artist;
     if (type == 'albums') return data.topalbums.album;
-}
+}   
 
 async function lfmGetFriends(lastFMUser) {
     let response = await fetch(`${rootURL}/?method=user.getfriends&user=${lastFMUser}&api_key=${apiKey}&format=json`);

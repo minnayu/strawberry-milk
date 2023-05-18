@@ -8,26 +8,28 @@ export default function Tracks({ userData }) {
             <button class="button is-link">1 Month</button>
             <button class="button is-link">1 Year</button>
           </div>
-            <div class="columns is-multiline">
+            <div class="box has-background-primary">
             {userData.userData.topTracks.sevenDays.map((track, index) => (
-              <div className="column mr-0 pt-3" key={index}>
-                <div className="box">
+              <div className="column mr-0 pt-3 hover" key={index}>
+                <div className="box is-flex is-justify-content-flex-start">
                   <article className="media">
-                    {/* <figure className="media-left">
+                    <figure className="media-left">
                       <p className="image is-16x16">
-                        <img src={track.image[2]["#text"]} alt="Placeholder image" />
+                        <img src={track.image} alt="Placeholder image" />
                       </p>
-                    </figure> */}
-                    <div className="media-content">
+                    </figure>
+                  </article>
+                  <div className="container">
                       <div className="content">
-                        <p>
-                          <strong>{track.name}</strong> <br />
+                        <p class="has-text-primary m-6 is-size-3">
+                          <a href={track.url} target="_blank"><strong>{track.name}</strong></a> <br />
+                        </p>
+                        <p className="has-text-primary m-6 is-size-4">
                           {track.artist}
                         </p>
-                        <p> <i>{track.playcount} scrobbles </i></p>
+                        <p class="has-text-primary m-6 is-size-5"> <i>{track.playcount} scrobbles </i></p>
                       </div>
                     </div>
-                  </article>
                 </div>
               </div>
             ))}

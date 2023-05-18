@@ -41,17 +41,17 @@ const Tabs = (userData) => {
       <ul>
         <li className={activeTab === 'recent' ? 'is-active' : ''}>
           <a onClick={() => setActiveTab('recent')}>
-            <span>Recent Tracks</span>
+            <span className="has-text-primary">Recent Tracks</span>
           </a>
         </li>
         <li className={activeTab === 'toptracks' ? 'is-active' : ''}>
           <a onClick={() => setActiveTab('toptracks')}>
-            <span>Top Tracks</span>
+            <span className="has-text-primary">Top Tracks</span>
           </a>
         </li>
         <li className={activeTab === 'topartists' ? 'is-active' : ''}>
           <a onClick={() => setActiveTab('topartists')}>
-            <span>Artists</span>
+            <span className="has-text-primary">Top Artists</span>
           </a>
         </li>
       </ul>
