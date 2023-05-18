@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const Navbar = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
@@ -25,13 +26,17 @@ const Navbar = ({ children }) => {
 
         <div id="strawberryNavbar" className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
           <div className="navbar-start">
-            <a className="navbar-item" href="/">
+            <Link className="navbar-item" href="/">
               Home
-            </a>
+            </Link>
 
-            <a className="navbar-item" href="/about">
+            <Link className="navbar-item" href="/dashboard">
+              Dashboard
+            </Link>
+
+            <Link className="navbar-item" href="/about">
               About Us
-            </a>  
+            </Link>
           </div>
         </div>
       </nav>

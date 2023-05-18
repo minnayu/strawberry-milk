@@ -3,30 +3,30 @@ import React from "react";
 export default function Recent({ userData }) {
     return (
         <div class="container">
-            <div class="columns is-multiline">
+            <div class="box has-background-primary">
             {userData.userData.recentTracks.map((track, index) => (
-                <div className="column mr-0 pt-3" key={index}>
-                <div className="box">
+                <div className="column mr-0 pt-3 hover" key={index}>
+                <div className="box is-flex is-justify-content-flex-start">
                     <article className="media">
                     <figure className="media-left">
-                        <p className="image is-16x16">
                         <img src={track.image} alt="Track image" />
-                        </p>
                     </figure>
-                    <div className="media-content">
-                        <div className="content">
-                        <p className="has-text-link">
-                            <a href={track.url} target="_blank"><strong>{track.name}</strong></a> <br />
-                            {track.artist}
-                        </p>
-                        {track.nowplaying ? (
-                            <progress class="progress is-link" max="100">45%</progress>
-                        ) : (
-                            <p></p>
-                        )}
+                    </article>
+                        <div className="container">
+                            <div className="content">
+                                <p className="has-text-primary m-6 is-size-3">
+                                    <a href={track.url} target="_blank"><strong>{track.name}</strong></a> <br />
+                                </p>
+                                <p className="has-text-primary m-6 is-size-4">
+                                    {track.artist}
+                                </p>
+                                {track.nowplaying ? (
+                                    <progress class="progress is-link" max="100">45%</progress>
+                                ) : (
+                                    <p></p>
+                                )}
                         </div>
                     </div>
-                    </article>
                 </div>
                 </div>
             ))}

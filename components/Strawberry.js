@@ -5,13 +5,13 @@ import Tabs from './Tabs';
 import FriendActivity from './FriendActivity';
 import Tracks from './Tracks';
 
-export default function Strawberry ( { data } ) {
+export default function Strawberry ( { userData } ) {
     return (
         <div>
-            <FMHeader userData={data}/>
+            <FMHeader userData={userData}/>
             <Wrapper>
                 <TabsWrapper>
-                    <Tabs userData={data}/>    
+                    <Tabs userData={userData}/>    
                 </TabsWrapper>
             </Wrapper>
           
