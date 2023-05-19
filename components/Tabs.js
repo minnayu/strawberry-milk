@@ -12,17 +12,17 @@ const TabContent = ({ activeTab, userData }) => {
               <Recent userData={userData}/>
               );              
         case 'toptracks':
-        return (
-          <Tracks userData={userData}/>
-        );
+          return (
+            <Tracks userData={userData}/>
+          );
         case 'topartists':
-        return (
-          <Artists userData={userData}/>
-        );
+          return (
+            <Artists userData={userData}/>
+          );
         case 'topalbums':
-        return (
-          <Albums userData={userData}/>
-        );
+          return (
+            <Albums userData={userData}/>
+          );
         default:
             return null;
   }
@@ -33,7 +33,7 @@ const Tabs = (userData) => {
 
   return (
       <div style={{"font-family":'Poppins'}}>
-      <div className="tabs is-boxed is-centered">
+      <div className="tabs is-boxed is-centered" style={{"font-size":"1.5em"}}>
         <ul>
           <li className={activeTab === 'recent' ? 'is-active' : ''}>
             <a onClick={() => setActiveTab('recent')}>

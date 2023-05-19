@@ -14,7 +14,6 @@ export default function Strawberry ( { userData } ) {
                     <Tabs userData={userData}/>    
                 </TabsWrapper>
             </Wrapper>
-          
         </div>
     );
 }
