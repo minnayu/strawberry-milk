@@ -36,10 +36,10 @@ export default function Dashboard() {
           <Strawberry userData={userData} />
         ) : (
           <div>
-            <LoadingTitle>
+            {/* <LoadingTitle> */}
               <p>Loading User Data</p>
               {/* {LoadingComponent} */}
-            </LoadingTitle>
+            {/* </LoadingTitle> */}
             {/* <Loading>
               <img src='https://freeiconshop.com/wp-content/uploads/edd/lastfm-flat.png' />
             </Loading> */}
