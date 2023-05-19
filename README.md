@@ -1,2 +1,2 @@
-# Strawberry-Milk-FM-Dashboard
+# Strawberry Milk FM Dashboard
 ## link to deployed site: 
