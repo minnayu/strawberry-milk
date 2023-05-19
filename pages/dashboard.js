@@ -40,9 +40,9 @@ export default function Dashboard() {
               <p>Loading User Data</p>
               {LoadingComponent}
             </LoadingTitle>
-            <Loading>
+            {/* <Loading>
               <img src='https://freeiconshop.com/wp-content/uploads/edd/lastfm-flat.png' />
-            </Loading>
+            </Loading> */}
           </div>
         )}
       </div>
