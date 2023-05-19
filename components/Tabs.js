@@ -32,8 +32,8 @@ const Tabs = (userData) => {
   const [activeTab, setActiveTab] = useState('recent');
 
   return (
-      <div style={{"font-family":'Poppins'}}>
-      <div className="tabs is-boxed is-centered" style={{"font-size":"1.5em"}}>
+      <div style={{fontFamily:'Poppins'}}>
+      <div className="tabs is-boxed is-centered" style={{fontSize:"1.5em"}}>
         <ul>
           <li className={activeTab === 'recent' ? 'is-active' : ''}>
             <a onClick={() => setActiveTab('recent')}>

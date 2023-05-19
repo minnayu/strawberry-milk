@@ -4390,7 +4390,7 @@ a.navbar-item,
     font-size: 1.5rem; }
 
 .card {
-  background-color: #FA7C91;
+  background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   color: #757763;

@@ -10,9 +10,9 @@ export default function Strawberry ( { userData } ) {
         <div>
             <FMHeader userData={userData}/>
             <Wrapper>
-                <TabsWrapper>
+                {/* <TabsWrapper> */}
                     <Tabs userData={userData}/>    
-                </TabsWrapper>
+                {/* </TabsWrapper> */}
             </Wrapper>
         </div>
     );
@@ -28,6 +28,9 @@ const Wrapper = styled.main`
 `;
 
 const TabsWrapper = styled.div`
-    flex-grow: 1; /* set flex-grow to 1 */
-    flex-basis: 1px; /* set flex-basis to a value greater than 0 */
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 1; /* set flex-grow to 1 */
+    padding: 3vw;
 `;
