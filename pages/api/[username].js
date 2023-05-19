@@ -1,6 +1,7 @@
 import { lfmGetUser, lfmGetRecent, lfmGetTop, lfmGetFriends } from '../../utils/functions'
 
 export default async function handler(req, res) {
+    console.log(test);
     const { username } = req.query;
     let userData = await lfmGetUser(username);
     let trackData = await lfmGetRecent(username);   
