@@ -45,12 +45,6 @@ const Page = styled.div`
   height: 75vh;
 `;
 
-const Wrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Input = styled.input`
   font-family: inherit;

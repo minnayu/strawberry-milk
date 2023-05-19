@@ -22,7 +22,11 @@ export default function Artists({ userData }) {
               onClick={() => setSelectedPeriod("year")}>
               1 Year
             </button>
-
+            <button
+              className={`button is-link ${selectedPeriod === "all" ? "is-active" : ""}`}
+              onClick={() => setSelectedPeriod("all")}>
+              All Time
+            </button>
           </div>
           <div class="box has-background-primary">
             {userData.userData.topArtists[selectedPeriod]?.map((artist, index) => (

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Recent from './Recent'
 import Tracks from './Tracks'
 import Artists from './Artists'
-const { lfmGetRecent } = require('../functions.js');
-
+import Albums from './Albums'
 
 const TabContent = ({ activeTab, userData }) => {
     
@@ -20,12 +19,9 @@ const TabContent = ({ activeTab, userData }) => {
         return (
           <Artists userData={userData}/>
         );
-        case 'documents':
+        case 'topalbums':
         return (
-            <div class="container">
-            <h2>Documents</h2>
-            <p>Coming soon...</p>
-            </div>
+          <Albums userData={userData}/>
         );
         default:
             return null;
@@ -52,6 +48,11 @@ const Tabs = (userData) => {
         <li className={activeTab === 'topartists' ? 'is-active' : ''}>
           <a onClick={() => setActiveTab('topartists')}>
             <span className="has-text-primary">Top Artists</span>
+          </a>
+        </li>
+        <li className={activeTab === 'topalbums' ? 'is-active' : ''}>
+          <a onClick={() => setActiveTab('topalbums')}>
+            <span className="has-text-primary">Top Albums</span>
           </a>
         </li>
       </ul>
