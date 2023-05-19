@@ -1,5 +1,5 @@
 const apiKey = process.env.LASTFM_TOKEN;
-const rootURL = 'http://ws.audioscrobbler.com/2.0';
+const rootURL = 'https://ws.audioscrobbler.com/2.0';
 
 // Gets the User object from Last.FM API.
 async function lfmGetUser(lastFMUser) {
