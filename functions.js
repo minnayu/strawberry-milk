@@ -96,8 +96,6 @@ async function lfmGetTop(lastFMUser, period, type) {
             };
          }));
     }
-    // if (type == 'artists') return data.topartists.artist;
-    
     if (type == 'albums') {
         return Promise.all(
             data.topalbums.album.map(async (album) => {
@@ -111,7 +109,6 @@ async function lfmGetTop(lastFMUser, period, type) {
             }
         }))
     }
-    // if (type == 'albums') return data.topalbums.album;
 }   
 
 async function lfmGetFriends(lastFMUser) {
