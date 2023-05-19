@@ -1,4 +1,4 @@
-const { lfmGetUser, lfmGetRecent, lfmGetTop, lfmGetFriends } = require('../..functions');
+import { lfmGetUser, lfmGetRecent, lfmGetTop, lfmGetFriends } from '../functions'
 
 export default async function handler(req, res) {
     const { username } = req.query;
