@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     let userData = await lfmGetUser(username);
     let trackData = await lfmGetRecent(username);   
     userData.recentTracks = trackData
-
+    
     // top tracks api calls
     let topTracksSevenDays = await lfmGetTop(username, '7day', 'tracks')
     let topTracksMonth = await lfmGetTop(username, '1month', 'tracks')
@@ -17,6 +17,8 @@ export default async function handler(req, res) {
     userData.topTracks.month = topTracksMonth
     userData.topTracks.year = topTracksYear
     userData.topTracks.all = topTracksAll
+    console.log('yas 1');
+    console.log(userData);
 
     // top artists api calls
     let topArtistsSevenDays = await lfmGetTop(username, '7day', 'artists')
@@ -29,6 +31,8 @@ export default async function handler(req, res) {
     userData.topArtists.month = topArtistsMonth
     userData.topArtists.year = topArtistsYear
     userData.topArtists.all = topArtistsAll
+    console.log('yas 2');
+    console.log(userData);
 
     // top albums api calls
     let topAlbumsSevenDays = await lfmGetTop(username, '7day', 'albums')
@@ -41,6 +45,8 @@ export default async function handler(req, res) {
     userData.topAlbums.month = topAlbumsMonth
     userData.topAlbums.year = topAlbumsYear
     userData.topAlbums.all = topAlbumsAll
+    console.log('yas 3');
+    console.log(userData);
 
     // user friends api calls
     let userFriends = await lfmGetFriends(username);
