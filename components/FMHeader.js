@@ -4,7 +4,6 @@ import styled from "styled-components";
 export default function FMHeader ( { userData } ) {
     // add nowplaying
     return (
-       
         <div>
             <Wrapper>
                 <div class="hero-body">
@@ -49,6 +48,7 @@ const Wrapper = styled.main`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    color: "#8A4D76"
 `
 
 const ImageWrapper = styled.div`

@@ -1,15 +1,31 @@
 import React from "react";
+import { useState } from "react";
 
 export default function Artists({ userData }) {
+  const [selectedPeriod, setSelectedPeriod] = useState("sevenDays");
+
     return (
         <div class="container">
           <div class="buttons is-centered">
-            <button class="button is-link">Week</button>
-            <button class="button is-link">1 Month</button>
-            <button class="button is-link">1 Year</button>
+            <button
+              className={`button is-link ${selectedPeriod === "sevenDays" ? "is-active" : ""}`}
+              onClick={() => setSelectedPeriod("sevenDays")}>
+              Week
+            </button>
+            <button
+              className={`button is-link ${selectedPeriod === "month" ? "is-active" : ""}`}
+              onClick={() => setSelectedPeriod("month")}>
+              1 Month
+            </button>
+            <button
+              className={`button is-link ${selectedPeriod === "year" ? "is-active" : ""}`}
+              onClick={() => setSelectedPeriod("year")}>
+              1 Year
+            </button>
+
           </div>
           <div class="box has-background-primary">
-            {userData.userData.topArtists.sevenDays.map((artist, index) => (
+            {userData.userData.topArtists[selectedPeriod]?.map((artist, index) => (
               <div className="column mr-0 pt-3 hover" key={index}>
                 <div className="box is-flex is-justify-content-flex-start">
                   <article className="media">
