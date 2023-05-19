@@ -10,31 +10,31 @@ export default function FMHeader ( { userData } ) {
                 <div class="hero-body">
                     <ImageWrapper>
                         <StyledImage src={userData.image[2]["#text"]} style={{height: "70%", width: "70%"}}/>
-                        <h1 class="subtitle" style={{color:"black"}}>{userData.name}</h1>
+                        <h1 class="subtitle" style={{color:"#8A4D76"}}>{userData.name}</h1>
                     </ImageWrapper>
                 </div>
                 <div class="hero-body">
                     <div>
-                        <p class="heading">Scrobbles</p>
-                        <p class="title">{Number(userData.playcount).toLocaleString()}</p>
+                        <p class="heading" style={{color:"#8A4D76"}}>Scrobbles</p>
+                        <p class="title" style={{color:"#8A4D76"}}>{Number(userData.playcount).toLocaleString()}</p>
                     </div>
                 </div>
                 <div class="hero-body">
                     <div>
-                        <p class="heading">Artists</p>
-                        <p class="title">{Number(userData.artist_count).toLocaleString()}</p>
+                        <p class="heading" style={{color:"#8A4D76"}}>Artists</p>
+                        <p class="title" style={{color:"#8A4D76"}}>{Number(userData.artist_count).toLocaleString()}</p>
                     </div>
                 </div>
                 <div class="hero-body">
                     <div>
-                        <p class="heading">Tracks</p>
-                        <p class="title">{Number(userData.track_count).toLocaleString()}</p>
+                        <p class="heading" style={{color:"#8A4D76"}}>Tracks</p>
+                        <p class="title" style={{color:"#8A4D76"}}>{Number(userData.track_count).toLocaleString()}</p>
                     </div>
                 </div>
                 <div class="hero-body">
                     <div>
-                        <p class="heading">Albums</p>
-                        <p class="title">{Number(userData.album_count).toLocaleString()}</p>
+                        <p class="heading" style={{color:"#8A4D76"}}>Albums</p>
+                        <p class="title" style={{color:"#8A4D76"}}>{Number(userData.album_count).toLocaleString()}</p>
                     </div>
                 </div>
             </Wrapper>

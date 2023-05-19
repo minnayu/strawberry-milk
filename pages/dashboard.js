@@ -28,8 +28,8 @@ export default function Dashboard ( ) {
                 <Strawberry userData={userData}/>
             ) : (
                 <div>
-                    <p class="is-title">Loading user data...</p>
-                    <progress class="progress is-link" max="100">45%</progress>
+                    <p className="is-title">Loading user data...</p>
+                    <progress className="progress is-link" max="100">45%</progress>
                 </div>
             )}
         </div>
