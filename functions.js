@@ -1,3 +1,5 @@
+const { profile } = require("console");
+
 const apiKey = process.env.LASTFM_TOKEN;
 const rootURL = 'http://ws.audioscrobbler.com/2.0';
 
@@ -117,11 +119,13 @@ async function lfmGetFriends(lastFMUser) {
     return Promise.all(
         data.friends.user.map(async (friend) => {
         let friendNowPlaying = await lfmGetNowPlaying(friend.name);
-        // console.log(friendNowPlaying);
+        let profilePicture = friend.image[2]['#text'];
+        if (!friend.image[2]['#text']) profilePicture = 'https://secure.gravatar.com/avatar/13a85474fe351743b7600c3389906212?s=174&d=mm&r=g'
+        // console.log(profilePicture);
         return {
             name: friend.name,
             url: friend.url,
-            image: friend.image[2]['#text'],
+            image: profilePicture,
             npTrack: friendNowPlaying.name,
             npArtist: friendNowPlaying.artist,
             npImage: friendNowPlaying.artist,
