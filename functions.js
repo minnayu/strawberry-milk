@@ -18,13 +18,13 @@ async function lfmGetRecent(lastFMUser) {
 
     for (let i = 0; i < tracks.length; i++) {
       let track = tracks[i];
-      let artist = track.artist["#text"];
+      let artist = track.artist['#text'];
       let url = track.url
       let name = track.name;
-      let image = track.image[2]["#text"];
+      let image = track.image[2]['#text'];
       let nowplaying = false;
 
-        if (track.hasOwnProperty("@attr") && track["@attr"].nowplaying) {
+        if (track.hasOwnProperty('@attr') && track['@attr'].nowplaying) {
             nowplaying = true;
         }
 
@@ -67,7 +67,7 @@ async function lfmGetTop(lastFMUser, period, type) {
     let response = await fetch(`${rootURL}/?method=user.gettop${type}&user=${lastFMUser}&period=${period}&api_key=${apiKey}&format=json`);
     let data = await response.json();
 
-    if (type == "tracks") {
+    if (type == 'tracks') {
         return Promise.all(
           data.toptracks.track.map(async (track) => {
             let trackInfo = await lfmGetTrackInfo(lastFMUser, track.artist.name, track.name);
@@ -82,7 +82,7 @@ async function lfmGetTop(lastFMUser, period, type) {
             };
         }));
     }      
-    if (type == "artists") {
+    if (type == 'artists') {
         return Promise.all(
             data.topartists.artist.map(async (artist) => {
             let artistInfo = await lfmGetArtistInfo(lastFMUser, artist.name);
@@ -97,7 +97,21 @@ async function lfmGetTop(lastFMUser, period, type) {
          }));
     }
     // if (type == 'artists') return data.topartists.artist;
-    if (type == 'albums') return data.topalbums.album;
+    
+    if (type == 'albums') {
+        return Promise.all(
+            data.topalbums.album.map(async (album) => {
+            let albumImage = 'https://icons-for-free.com/download-icon-last+last+fm+lastfm+logo+icon-1320183868072439373_128.ico';
+            if (album.image) albumImage = album.image[2]['#text'];
+            return {
+                name: album.name,
+                playcount: album.playcount,
+                url: album.url,
+                image: albumImage
+            }
+        }))
+    }
+    // if (type == 'albums') return data.topalbums.album;
 }   
 
 async function lfmGetFriends(lastFMUser) {

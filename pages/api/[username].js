@@ -16,11 +16,22 @@ export default async function handler(req, res) {
     userData.topTracks.year = topTracksYear
 
     let topArtistSevenDays = await lfmGetTop(username, '7day', 'artists')
-    let topArtistOnemonth = await lfmGetTop(username, '1month', 'artist')
-    let topArtistYear = await lfmGetTop(username, '12month', 'artist')
+    let topArtistOneMonth = await lfmGetTop(username, '1month', 'artists')
+    let topArtistYear = await lfmGetTop(username, '12month', 'artists')
 
     userData.topArtists = {}
     userData.topArtists.sevenDays = topArtistSevenDays
+    userData.topArtists.oneMonth = topArtistOneMonth
+    userData.topArtists.year = topArtistYear
+
+    let topAlbumSevenDays = await lfmGetTop(username, '7day', 'albums')
+    let topAlbumOneMonth = await lfmGetTop(username, '1month', 'albums')
+    let topAlbumYear = await lfmGetTop(username, '12month', 'albums')
+
+    userData.topAlbums = {}
+    userData.topAlbums.sevenDays = topAlbumSevenDays
+    userData.topAlbums.oneMonth = topAlbumOneMonth
+    userData.topAlbums.year = topAlbumYear
 
     res.status(200).json(userData);
 }
