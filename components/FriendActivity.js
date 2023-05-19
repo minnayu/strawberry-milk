@@ -1,54 +1,39 @@
 import React from 'react';
-import useSWR from 'swr'
 
-const Card = ({ title, content }) => {
+export default function FriendActivity({ userData }) {
   return (
-    <div className="card">
-      <div className="card-content">
-        <p className="title">{title}</p>
-        <div className="content">{content}</div>
+    <div class="container" style={{fontFamily:"Poppins"}}>
+      <div class ="box has-background-dark">
+        <p className="has-text-white is-size-4"> Friend Activity</p>
+        {/* <p> {JSON.stringify(userData.friends)} </p> */}
+        {userData.friends.map((friend, index) => (
+          <div className="column mr-0 pt-3 hover" key={index}>
+          <div className="box is-flex is-justify-content-flex-start">
+            <article>
+            <figure className="media-left image">
+              <img src={friend.image} alt="Friend Profile Picture" />
+            </figure>
+            </article>
+              <div className="container">
+              <p className="has-text-primary ml-6 mt-5 is-size-4">
+                <a href={friend.url} target="_blank"><strong>{friend.name}</strong></a> <br />
+              </p>
+              <p className="has-text-primary ml-6 mt-5 is-size-5">
+                  {friend.npTrack}
+              </p>
+              <p className="has-text-primary ml-6 mt-5 is-size-6">
+                  {friend.npArtist}
+              </p>
+              {friend.nowplaying ? (
+                  <progress class="progress is-link mt-3 ml-4" max="100">45%</progress>
+              ) : (
+                  <p></p>
+              )}
+              </div>
+          </div>
+          </div>
+        ))}
       </div>
     </div>
-  );
-};
-
-const CardList = ({ cards }) => {
-  return (
-    <div className="card">
-      {cards.map((card, index) => (
-        <Card key={index} title={card.title} content={card.content} />
-      ))}
-    </div>
-  );
-};
-
-const cardsData = [
-  {
-    title: 'Card 1',
-    content: 'This is the content for Card 1',
-  },
-  {
-    title: 'Card 2',
-    content: 'This is the content for Card 2',
-  },
-  {
-    title: 'Card 3',
-    content: 'This is the content for Card 3',
-  },
-];
-
-const FriendActivity = (user) => {
-    // const { data, error } = useSWR(`/api/user/${user}/tracks`, fetcher)
-
-    return (
-        <div className="container">
-        {/* <h1 className="title">Friend Activity</h1>
-        <CardList cards={cardsData} /> */}
-        {/* <p>{JSON.stringify(data)}</p> */}
-        </div>
-    );
-};
-
-export default FriendActivity;
-
-
+);      
+}
