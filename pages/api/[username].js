@@ -1,4 +1,4 @@
-const { lfmGetUser, lfmGetRecent, lfmGetTop } = require('/functions.js');
+const { lfmGetUser, lfmGetRecent, lfmGetTop, lfmGetFriends } = require('/functions.js');
 
 export default async function handler(req, res) {
     const { username } = req.query;
@@ -6,6 +6,7 @@ export default async function handler(req, res) {
     let trackData = await lfmGetRecent(username);   
     userData.recentTracks = trackData
 
+    // top tracks api calls
     let topTracksSevenDays = await lfmGetTop(username, '7day', 'tracks')
     let topTracksMonth = await lfmGetTop(username, '1month', 'tracks')
     let topTracksYear = await lfmGetTop(username, '12month', 'tracks')
@@ -15,9 +16,9 @@ export default async function handler(req, res) {
     userData.topTracks.sevenDays = topTracksSevenDays
     userData.topTracks.month = topTracksMonth
     userData.topTracks.year = topTracksYear
-    userData.topTracks.all = topTracksYear
+    userData.topTracks.all = topTracksAll
 
-
+    // top artists api calls
     let topArtistsSevenDays = await lfmGetTop(username, '7day', 'artists')
     let topArtistsMonth = await lfmGetTop(username, '1month', 'artists')
     let topArtistsYear = await lfmGetTop(username, '12month', 'artists')
@@ -29,6 +30,7 @@ export default async function handler(req, res) {
     userData.topArtists.year = topArtistsYear
     userData.topArtists.all = topArtistsAll
 
+    // top albums api calls
     let topAlbumsSevenDays = await lfmGetTop(username, '7day', 'albums')
     let topAlbumsMonth = await lfmGetTop(username, '1month', 'albums')
     let topAlbumsYear = await lfmGetTop(username, '12month', 'albums')
@@ -39,6 +41,12 @@ export default async function handler(req, res) {
     userData.topAlbums.month = topAlbumsMonth
     userData.topAlbums.year = topAlbumsYear
     userData.topAlbums.all = topAlbumsAll
+
+    // user friends api calls
+    let userFriends = await lfmGetFriends(username);
+    
+    userData.friends = {}
+    userData.friends.friendInfo = userFriends;
 
     res.status(200).json(userData);
 }

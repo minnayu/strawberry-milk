@@ -107,14 +107,28 @@ async function lfmGetTop(lastFMUser, period, type) {
                 url: album.url,
                 image: albumImage
             }
-        }))
+        }));
     }
 }   
 
 async function lfmGetFriends(lastFMUser) {
     let response = await fetch(`${rootURL}/?method=user.getfriends&user=${lastFMUser}&api_key=${apiKey}&format=json`);
     let data = await response.json();
-    return data.friends.user;
+    return Promise.all(
+        data.friends.user.map(async (friend) => {
+        let friendNowPlaying = await lfmGetNowPlaying(friend.name);
+        // console.log(friendNowPlaying);
+        return {
+            name: friend.name,
+            url: friend.url,
+            image: friend.image[2]['#text'],
+            npTrack: friendNowPlaying.name,
+            npArtist: friendNowPlaying.artist,
+            npImage: friendNowPlaying.artist,
+            npURL: friendNowPlaying.url,
+            nowplaying: friendNowPlaying.nowplaying,
+        }
+    }));
 }
 
 // module.exports = { error, lfmGetUsername, lfmGetUser, lfmGetRecent, lfmGetNowPlaying, lfmGetTrackInfo, lfmGetArtistInfo, lfmGetAlbumInfo, lfmGetTop, lfmArtistSearch, lfmTrackSearch, lfmAlbumSearch }
