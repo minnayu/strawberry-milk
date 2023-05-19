@@ -11,6 +11,7 @@ async function lfmGetUser(lastFMUser) {
 
 // Gets most recent plays from Last.FM per user.
 async function lfmGetRecent(lastFMUser) {
+    console.log(rootURL);
     let response = await fetch(`${rootURL}/?method=user.getrecenttracks&user=${lastFMUser}&api_key=${apiKey}&format=json`);
     let data = await response.json();
     let tracks = data.recenttracks.track;
