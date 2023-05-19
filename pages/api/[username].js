@@ -8,9 +8,12 @@ export default async function handler(req, res) {
 
     let topTracksSevenDays = await lfmGetTop(username, '7day', 'tracks')
     let topTracksOneMonth = await lfmGetTop(username, '1month', 'tracks')
+    let topTracksYear = await lfmGetTop(username, '12month', 'tracks')
+
     userData.topTracks = {}
     userData.topTracks.sevenDays = topTracksSevenDays
     userData.topTracks.oneMonth = topTracksOneMonth
+    userData.topTracks.year = topTracksYear
 
     let topArtistSevenDays = await lfmGetTop(username, '7day', 'artists')
     userData.topArtists = {}
