@@ -1,4 +1,4 @@
-const { profile } = require("console");
+// const { profile } = require("console");
 
 const apiKey = process.env.LASTFM_TOKEN;
 const rootURL = 'http://ws.audioscrobbler.com/2.0';
