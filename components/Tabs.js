@@ -32,32 +32,32 @@ const Tabs = (userData) => {
   const [activeTab, setActiveTab] = useState('recent');
 
   return (
-      <div>
-    <div className="tabs is-boxed is-centered">
-      <ul>
-        <li className={activeTab === 'recent' ? 'is-active' : ''}>
-          <a onClick={() => setActiveTab('recent')}>
-            <span className="has-text-primary">Recent Tracks</span>
-          </a>
-        </li>
-        <li className={activeTab === 'toptracks' ? 'is-active' : ''}>
-          <a onClick={() => setActiveTab('toptracks')}>
-            <span className="has-text-primary">Top Tracks</span>
-          </a>
-        </li>
-        <li className={activeTab === 'topartists' ? 'is-active' : ''}>
-          <a onClick={() => setActiveTab('topartists')}>
-            <span className="has-text-primary">Top Artists</span>
-          </a>
-        </li>
-        <li className={activeTab === 'topalbums' ? 'is-active' : ''}>
-          <a onClick={() => setActiveTab('topalbums')}>
-            <span className="has-text-primary">Top Albums</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <TabContent activeTab={activeTab} userData={userData}/>
+      <div style={{"font-family":'Poppins'}}>
+      <div className="tabs is-boxed is-centered">
+        <ul>
+          <li className={activeTab === 'recent' ? 'is-active' : ''}>
+            <a onClick={() => setActiveTab('recent')}>
+              <span className="has-text-primary">Recent Tracks</span>
+            </a>
+          </li>
+          <li className={activeTab === 'toptracks' ? 'is-active' : ''}>
+            <a onClick={() => setActiveTab('toptracks')}>
+              <span className="has-text-primary">Top Tracks</span>
+            </a>
+          </li>
+          <li className={activeTab === 'topartists' ? 'is-active' : ''}>
+            <a onClick={() => setActiveTab('topartists')}>
+              <span className="has-text-primary">Top Artists</span>
+            </a>
+          </li>
+          <li className={activeTab === 'topalbums' ? 'is-active' : ''}>
+            <a onClick={() => setActiveTab('topalbums')}>
+              <span className="has-text-primary">Top Albums</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <TabContent activeTab={activeTab} userData={userData}/>
     </div>
   );
 };

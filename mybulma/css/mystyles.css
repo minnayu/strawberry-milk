@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
 a {
   color: #FA7C91;
   transition: color 0.3s ease; }
@@ -203,7 +203,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: "Nunito", sans-serif; }
+  font-family: "Poppins", sans-serif; }
 
 code,
 pre {
@@ -3302,13 +3302,13 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-weight: 700 !important; }
 
 .is-family-primary {
-  font-family: "Nunito", sans-serif !important; }
+  font-family: "Poppins", sans-serif !important; }
 
 .is-family-secondary {
-  font-family: "Nunito", sans-serif !important; }
+  font-family: "Poppins", sans-serif !important; }
 
 .is-family-sans-serif {
-  font-family: "Nunito", sans-serif !important; }
+  font-family: "Poppins", sans-serif !important; }
 
 .is-family-monospace {
   font-family: monospace !important; }

@@ -47,7 +47,7 @@ const Page = styled.div`
 
 
 const Input = styled.input`
-  font-family: inherit;
+  font-family: 'Poppins';
   width: 100%;
   border: 0;
   border-bottom: 2px solid #8A4D76;

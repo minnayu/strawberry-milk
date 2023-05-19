@@ -51,16 +51,17 @@ const LoadingAnimation = keyframes`
 `;
 
 const LoadingTitle = styled.div`
-  font-size: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20vh;
-  
-  &::after {
+    font-family: 'Poppins';
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+
+    &::after {
     content: '...';
     animation: ${LoadingAnimation} 1s infinite;
-  }
+    }
 `;
 
 const LoadingComponent = () => {

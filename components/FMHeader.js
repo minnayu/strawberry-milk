@@ -43,6 +43,7 @@ export default function FMHeader ( { userData } ) {
 
 
 const Wrapper = styled.main`
+    font-family: 'Poppins';
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;

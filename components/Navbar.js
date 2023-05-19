@@ -24,7 +24,7 @@ const Navbar = ({ children }) => {
           </a>
         </div>
 
-        <div id="strawberryNavbar" className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
+        <div id="strawberryNavbar" style={{"font-family":'Poppins'}} className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
           <div className="navbar-start">
             <Link className="navbar-item" href="/">
               Home

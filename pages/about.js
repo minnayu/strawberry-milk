@@ -1,4 +1,3 @@
-import { Container, Main, Title, Description } from '../components/sharedstyles'
 import styled from 'styled-components'
 
 export default function About() {
@@ -14,6 +13,7 @@ export default function About() {
 }
 
 const Page = styled.div`
+  font-family: 'Poppins';
   display: flex;
   justify-content: center;
   align-items: center;
