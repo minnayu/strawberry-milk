@@ -18,8 +18,14 @@ export default function Home() {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent the form from submitting normally
+    handleSetUsernameClick(); // Call the handleSetUsernameClick function
+  };
+
   return (
     <Page>
+      <form onSubmit={handleSubmit}>
         <div className="field">
           <div className="control">
             <Input
@@ -31,9 +37,10 @@ export default function Home() {
             />
           </div>
           <button
-          className="button is-medium is-link mt-5"
-          onClick={handleSetUsernameClick}> Enter </button>
+            className="button is-medium is-link mt-5"
+            type="submit"> Enter </button>
         </div>
+      </form>
     </Page>
   );
 }
@@ -44,7 +51,6 @@ const Page = styled.div`
   align-items: center;
   height: 75vh;
 `;
-
 
 const Input = styled.input`
   font-family: 'Poppins';
