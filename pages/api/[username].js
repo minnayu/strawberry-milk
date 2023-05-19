@@ -45,8 +45,8 @@ export default async function handler(req, res) {
     // user friends api calls
     let userFriends = await lfmGetFriends(username);
     
-    userData.friends = {}
-    userData.friends.friendInfo = userFriends;
+    // userData.friends = {}
+    userData.friends = userFriends;
 
     res.status(200).json(userData);
 }

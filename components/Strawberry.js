@@ -13,6 +13,9 @@ export default function Strawberry ( { userData } ) {
                 {/* <TabsWrapper> */}
                     <Tabs userData={userData}/>    
                 {/* </TabsWrapper> */}
+                <FriendWrapper>
+                    <FriendActivity userData={userData}/>
+                </FriendWrapper>
             </Wrapper>
         </div>
     );
@@ -22,9 +25,17 @@ const Wrapper = styled.main`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start; /* set align-items to flex-start */
     // padding: 50px max(10px, 10%);
+`;
+
+const FriendWrapper = styled.main`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; /* set align-items to flex-start */
 `;
 
 const TabsWrapper = styled.div`
