@@ -38,7 +38,7 @@ export default function Dashboard() {
           <div>
             <LoadingTitle>
               <p>Loading User Data</p>
-              {LoadingComponent}
+              {/* {LoadingComponent} */}
             </LoadingTitle>
             {/* <Loading>
               <img src='https://freeiconshop.com/wp-content/uploads/edd/lastfm-flat.png' />
