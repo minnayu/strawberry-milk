@@ -1,4 +1,4 @@
-const { lfmGetUser, lfmGetRecent, lfmGetTop, lfmGetFriends } = require('/functions.js');
+const { lfmGetUser, lfmGetRecent, lfmGetTop, lfmGetFriends } = require('../..functions');
 
 export default async function handler(req, res) {
     const { username } = req.query;
@@ -17,7 +17,6 @@ export default async function handler(req, res) {
     userData.topTracks.month = topTracksMonth
     userData.topTracks.year = topTracksYear
     userData.topTracks.all = topTracksAll
-    console.log('yas 1');
     console.log(userData);
 
     // top artists api calls
@@ -31,7 +30,6 @@ export default async function handler(req, res) {
     userData.topArtists.month = topArtistsMonth
     userData.topArtists.year = topArtistsYear
     userData.topArtists.all = topArtistsAll
-    console.log('yas 2');
     console.log(userData);
 
     // top albums api calls
