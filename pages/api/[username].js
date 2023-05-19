@@ -9,29 +9,36 @@ export default async function handler(req, res) {
     let topTracksSevenDays = await lfmGetTop(username, '7day', 'tracks')
     let topTracksMonth = await lfmGetTop(username, '1month', 'tracks')
     let topTracksYear = await lfmGetTop(username, '12month', 'tracks')
+    let topTracksAll = await lfmGetTop(username, 'all', 'tracks')
 
     userData.topTracks = {}
     userData.topTracks.sevenDays = topTracksSevenDays
     userData.topTracks.month = topTracksMonth
     userData.topTracks.year = topTracksYear
+    userData.topTracks.all = topTracksYear
 
-    let topArtistSevenDays = await lfmGetTop(username, '7day', 'artists')
-    let topArtistMonth = await lfmGetTop(username, '1month', 'artists')
-    let topArtistYear = await lfmGetTop(username, '12month', 'artists')
+
+    let topArtistsSevenDays = await lfmGetTop(username, '7day', 'artists')
+    let topArtistsMonth = await lfmGetTop(username, '1month', 'artists')
+    let topArtistsYear = await lfmGetTop(username, '12month', 'artists')
+    let topArtistsAll = await lfmGetTop(username, 'all', 'artists')
 
     userData.topArtists = {}
-    userData.topArtists.sevenDays = topArtistSevenDays
-    userData.topArtists.month = topArtistMonth
-    userData.topArtists.year = topArtistYear
+    userData.topArtists.sevenDays = topArtistsSevenDays
+    userData.topArtists.month = topArtistsMonth
+    userData.topArtists.year = topArtistsYear
+    userData.topArtists.all = topArtistsAll
 
-    let topAlbumSevenDays = await lfmGetTop(username, '7day', 'albums')
-    let topAlbumMonth = await lfmGetTop(username, '1month', 'albums')
-    let topAlbumYear = await lfmGetTop(username, '12month', 'albums')
+    let topAlbumsSevenDays = await lfmGetTop(username, '7day', 'albums')
+    let topAlbumsMonth = await lfmGetTop(username, '1month', 'albums')
+    let topAlbumsYear = await lfmGetTop(username, '12month', 'albums')
+    let topAlbumsAll = await lfmGetTop(username, 'all', 'albums')
 
     userData.topAlbums = {}
-    userData.topAlbums.sevenDays = topAlbumSevenDays
-    userData.topAlbums.month = topAlbumMonth
-    userData.topAlbums.year = topAlbumYear
+    userData.topAlbums.sevenDays = topAlbumsSevenDays
+    userData.topAlbums.month = topAlbumsMonth
+    userData.topAlbums.year = topAlbumsYear
+    userData.topAlbums.all = topAlbumsAll
 
     res.status(200).json(userData);
 }
