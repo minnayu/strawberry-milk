@@ -67,12 +67,26 @@ async function lfmGetTop(lastFMUser, period, type) {
     let response = await fetch(`${rootURL}/?method=user.gettop${type}&user=${lastFMUser}&period=${period}&api_key=${apiKey}&format=json`);
     let data = await response.json();
 
+    // if (!data.topartists) {
+    //     console.log('no artist data');
+    //     // console.log(data)
+    //     return;
+    // }
+    // if (!data.topalbums) {
+    //     console.log('no album data');
+    //     // console.log(data);
+    //     return;
+    // }
+
     if (type == 'tracks') {
         return Promise.all(
           data.toptracks.track.map(async (track) => {
             let trackInfo = await lfmGetTrackInfo(lastFMUser, track.artist.name, track.name);
-            let trackImage = 'https://icons-for-free.com/download-icon-last+last+fm+lastfm+logo+icon-1320183868072439373_128.ico';
-            if (trackInfo.album) trackImage = trackInfo.album.image[2]['#text']
+            let trackImage = 'https://external-preview.redd.it/LnUfxt4VO8sAcIV0Zf3RYirs52BElqTr3vabArrF2Mk.png?auto=webp&s=e8a06a86cbaf67bb8db9165ac6570f29749579e7';
+            if (trackInfo && trackInfo.album && trackInfo.album.image && trackInfo.album.image[2] && trackInfo.album.image[2]['#text']) {
+                trackImage = trackInfo.album.image[2]['#text'];
+              }
+              
             return {
               name: track.name,
               artist: track.artist.name,
@@ -86,8 +100,11 @@ async function lfmGetTop(lastFMUser, period, type) {
         return Promise.all(
             data.topartists.artist.map(async (artist) => {
             let artistInfo = await lfmGetArtistInfo(lastFMUser, artist.name);
-            let artistImage = 'https://icons-for-free.com/download-icon-last+last+fm+lastfm+logo+icon-1320183868072439373_128.ico';
-            if (artistInfo.image) artistImage = artistInfo.image[2]['#text'];
+            let artistImage = 'https://external-preview.redd.it/LnUfxt4VO8sAcIV0Zf3RYirs52BElqTr3vabArrF2Mk.png?auto=webp&s=e8a06a86cbaf67bb8db9165ac6570f29749579e7';
+            if (artistInfo && artistInfo.image && artistInfo.image[2] && artistInfo.image[2]['#text']) {
+                artistImage = artistInfo.image[2]['#text'];
+              }
+              
             return {
                 name: artist.name,
                 playcount: artist.playcount,
@@ -99,8 +116,9 @@ async function lfmGetTop(lastFMUser, period, type) {
     if (type == 'albums') {
         return Promise.all(
             data.topalbums.album.map(async (album) => {
-            let albumImage = 'https://icons-for-free.com/download-icon-last+last+fm+lastfm+logo+icon-1320183868072439373_128.ico';
-            if (album.image) albumImage = album.image[2]['#text'];
+            let albumImage = 'https://external-preview.redd.it/LnUfxt4VO8sAcIV0Zf3RYirs52BElqTr3vabArrF2Mk.png?auto=webp&s=e8a06a86cbaf67bb8db9165ac6570f29749579e7';
+            if (album&& album.image && 
+                album.image[2]['#text']) albumImage = album.image[2]['#text'];
             return {
                 name: album.name,
                 playcount: album.playcount,
@@ -117,9 +135,8 @@ async function lfmGetFriends(lastFMUser) {
     return Promise.all(
         data.friends.user.map(async (friend) => {
         let friendNowPlaying = await lfmGetNowPlaying(friend.name);
-        let profilePicture = friend.image[2]['#text'];
-        if (!friend.image[2]['#text']) profilePicture = 'https://secure.gravatar.com/avatar/13a85474fe351743b7600c3389906212?s=174&d=mm&r=g'
-        // console.log(profilePicture);
+        let profilePicture = 'https://secure.gravatar.com/avatar/13a85474fe351743b7600c3389906212?s=174&d=mm&r=g'
+        if (friend && friend.image && friend.image[2] && friend.image[2]['#text']) profilePicture = friend.image[2]['#text'];
         return {
             name: friend.name,
             url: friend.url,

@@ -13,7 +13,7 @@ export default function About() {
           <div class="card-content">
             <div class="content">
               <p class="is-centered is-size-4">
-                <a href="https://www.linkedin.com/in/minna-yu-54ab531bb/" _target="blank">Minna Yu</a>
+                <a href="https://www.linkedin.com/in/minna-yu-54ab531bb/" target="_blank">Minna Yu</a>
               </p>
             </div>
           </div>
@@ -27,7 +27,7 @@ export default function About() {
           <div class="card-content">
             <div class="content">
               <p class="is-size-4">
-                <a href="https://www.linkedin.com/in/christonthat/" _target="blank">Chris Ton-That</a>
+                <a href="https://www.linkedin.com/in/christonthat/" target="_blank">Chris Ton-That</a>
               </p>
             </div>
           </div>

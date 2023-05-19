@@ -3,45 +3,52 @@ import { useRouter } from 'next/router';
 import Strawberry from '../components/Strawberry'
 import styled, { keyframes } from "styled-components";
 
-export default function Dashboard ( ) {
+export default function Dashboard() {
     const router = useRouter();
     const [userData, setUserData] = useState({});
     const [hasUserData, setHasUserData] = useState(false);
     const { username } = router.query;
-
+  
     useEffect(() => {
-        const fetchUserData = async () => {
-          const res = await fetch(`/api/${username}`);
-          const data = await res.json();
+      const fetchUserData = async () => {
+        console.log('Fetching user data...')
+        try {
+          const response = await fetch(`/api/${username}`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+          }
+          const data = await response.json();
           setUserData(data);
-          setHasUserData(true)
-        };
-    
-        if (username) {
-          fetchUserData();
+          setHasUserData(true);
+        } catch (error) {
+          console.error('Error fetching user data:', error);
         }
+      };
+  
+      if (username) {
+        fetchUserData();
+      }
     }, [username]);
-
+  
     return (
-      
-        <div>
-            {hasUserData && userData ? (
-                <Strawberry userData={userData}/>
-            ) : (
-                <div>
-                    <LoadingTitle>
-                        <p>Loading User Data</p>
-                        {LoadingComponent}
-                    </LoadingTitle>
-                    {/* <progress className="progress is-link" max="100">45%</progress> */}
-                    <Loading>
-                        <img src='https://freeiconshop.com/wp-content/uploads/edd/lastfm-flat.png' />
-                    </Loading>
-                </div>
-            )}
-        </div>
+      <div>
+        {hasUserData && userData ? (
+          <Strawberry userData={userData} />
+        ) : (
+          <div>
+            <LoadingTitle>
+              <p>Loading User Data</p>
+              {LoadingComponent}
+            </LoadingTitle>
+            <Loading>
+              <img src='https://freeiconshop.com/wp-content/uploads/edd/lastfm-flat.png' />
+            </Loading>
+          </div>
+        )}
+      </div>
     );
 }
+  
 
 const LoadingAnimation = keyframes`
   0% { content: ''; }
