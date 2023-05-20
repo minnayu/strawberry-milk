@@ -11,7 +11,6 @@ async function lfmGetUser(lastFMUser) {
 
 // Gets most recent plays from Last.FM per user.
 async function lfmGetRecent(lastFMUser) {
-    // let response = await fetch(`${rootURL}/?method=user.getrecenttracks&user=${lastFMUser}&api_key=${apiKey}&format=json`);
     let response = await fetch(`${rootURL}/?method=user.getrecenttracks&user=${lastFMUser}&api_key=${apiKey}&limit=10&page=1&format=json`);
     let data = await response.json();
     let tracks = data.recenttracks.track;
@@ -112,60 +111,10 @@ async function lfmGetTop(lastFMUser, period, type) {
                  }));
              }
     }
-
-    // if (type == 'tracks') {
-    //     return Promise.all(
-    //       data.toptracks.track.map(async (track) => {
-    //         let trackInfo = await lfmGetTrackInfo(lastFMUser, track.artist.name, track.name);
-    //         let trackImage = 'https://external-preview.redd.it/LnUfxt4VO8sAcIV0Zf3RYirs52BElqTr3vabArrF2Mk.png?auto=webp&s=e8a06a86cbaf67bb8db9165ac6570f29749579e7';
-    //         if (trackInfo && trackInfo.album && trackInfo.album.image && trackInfo.album.image[2] && trackInfo.album.image[2]['#text']) {
-    //             trackImage = trackInfo.album.image[2]['#text'];
-    //           }
-              
-    //         return {
-    //           name: track.name,
-    //           artist: track.artist.name,
-    //           url: track.url,
-    //           playcount: track.playcount,
-    //           image: trackImage
-    //         };
-    //     }));
-    // }      
-    // if (type == 'artists') {
-    //     return Promise.all(
-    //         data.topartists.artist.map(async (artist) => {
-    //         let artistInfo = await lfmGetArtistInfo(lastFMUser, artist.name);
-    //         let artistImage = 'https://external-preview.redd.it/LnUfxt4VO8sAcIV0Zf3RYirs52BElqTr3vabArrF2Mk.png?auto=webp&s=e8a06a86cbaf67bb8db9165ac6570f29749579e7';
-    //         if (artistInfo && artistInfo.image && artistInfo.image[2] && artistInfo.image[2]['#text']) {
-    //             artistImage = artistInfo.image[2]['#text'];
-    //           }
-              
-    //         return {
-    //             name: artist.name,
-    //             playcount: artist.playcount,
-    //             url: artist.url,
-    //             image: artistImage
-    //         };
-    //      }));
-    // }
-    // if (type == 'albums') {
-    //     return Promise.all(
-    //         data.topalbums.album.map(async (album) => {
-    //         let albumImage = 'https://external-preview.redd.it/LnUfxt4VO8sAcIV0Zf3RYirs52BElqTr3vabArrF2Mk.png?auto=webp&s=e8a06a86cbaf67bb8db9165ac6570f29749579e7';
-    //         if (album&& album.image && 
-    //             album.image[2]['#text']) albumImage = album.image[2]['#text'];
-    //         return {
-    //             name: album.name,
-    //             playcount: album.playcount,
-    //             url: album.url,
-    //             image: albumImage
-    //         }
-    //     }));
-    // }
 }   
 
 async function lfmGetFriends(lastFMUser) {
-    let response = await fetch(`${rootURL}/?method=user.getfriends&user=${lastFMUser}&api_key=${apiKey}&format=json`);
+    let response = await fetch(`${rootURL}/?method=user.getfriends&user=${lastFMUser}&api_key=${apiKey}&limit=10&page=1&format=json`);
     let data = await response.json();
     return Promise.all(
         data.friends.user.map(async (friend) => {
