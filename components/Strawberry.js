@@ -3,16 +3,15 @@ import styled from "styled-components";
 import FMHeader from './FMHeader';
 import Tabs from './Tabs';
 import FriendActivity from './FriendActivity';
-import Tracks from './Tracks';
 
 export default function Strawberry ( { userData } ) {
     return (
         <div>
             <FMHeader userData={userData}/>
             <Wrapper>
-                {/* <TabsWrapper> */}
-                    <Tabs userData={userData}/>    
-                {/* </TabsWrapper> */}
+              <TabWrapper>
+                <Tabs userData={userData}/>
+              </TabWrapper>    
                 <FriendWrapper>
                     <FriendActivity userData={userData}/>
                 </FriendWrapper>
@@ -22,26 +21,24 @@ export default function Strawberry ( { userData } ) {
 }
 
 const Wrapper = styled.main`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-start; /* set align-items to flex-start */
-    // padding: 50px max(10px, 10%);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
 `;
 
-const FriendWrapper = styled.main`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start; /* set align-items to flex-start */
+const TabWrapper = styled.div`
+  flex: 0 0 70%;
 `;
 
-const TabsWrapper = styled.div`
-    display:flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-shrink: 1; /* set flex-grow to 1 */
-    padding: 3vw;
+const FriendWrapper = styled.div`
+  flex: 1 0 30%;
+  padding: 0 2vw 2vw 2vw;
+  @media (max-width: 768px) {
+    flex: 0 0 70%; /* Adjust the flex value for smaller screens */
+  }
 `;
+
+
+  

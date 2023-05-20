@@ -43,14 +43,26 @@ export default function FMHeader ( { userData } ) {
 
 
 const Wrapper = styled.main`
-    font-family: 'Poppins';
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: "#8A4D76"
-`
+  font-family: 'Poppins';
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: "#8A4D76";
+  padding: 1vw;
+  
+  > div {
+    flex: 1;
+    min-width: 200px;
+    padding: 0 10px; 
+    text-align: center;
+  }
+  
+  .hero-body {
+    margin-bottom: 20px; /* Adjust the margin value as per your preference */
+  }
+`;
+
 
 const ImageWrapper = styled.div`
     display: flex;
