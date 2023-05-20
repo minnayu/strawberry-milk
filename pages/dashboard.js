@@ -48,7 +48,6 @@ export default function Dashboard() {
       </div>
     );
 }
-  
 
 const LoadingAnimation = keyframes`
   0% { content: ''; }

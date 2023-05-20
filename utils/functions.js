@@ -72,8 +72,10 @@ async function lfmGetTop(lastFMUser, period, type) {
         case 'tracks':
             return Promise.all(data.toptracks.track.map(async (track) => {
                 // console.log('tracks');
-                // console.log(track.image[2]['#text']);
-                if (track && track.image && track.image[2] && track.image[2]['#text']) image = track.image[2]['#text'];
+                let trackInfo = await lfmGetTrackInfo(lastFMUser, track.artist.name, track.name);
+                if (trackInfo && trackInfo.album && trackInfo.album.image && trackInfo.album.image[2] && trackInfo.album.image[2]['#text']) {
+                    image = trackInfo.album.image[2]['#text'];
+                }
                 return {
                     name: track.name,
                     artist: track.artist.name,
@@ -85,10 +87,11 @@ async function lfmGetTop(lastFMUser, period, type) {
         case 'artists':
             if(data.topartists) {
                 return Promise.all(data.topartists.artist.map(async (artist) => {
-                    // console.log('artists');
-                // if (artistInfo && artistInfo.image && artistInfo.image[2] && artistInfo.image[2]['#text']) {
-                //     artistImage = artistInfo.image[2]['#text'];
-                //   }
+                // console.log('artists');
+                let artistInfo = await lfmGetArtistInfo(lastFMUser, artist.name);
+                if (artistInfo && artistInfo.image && artistInfo.image[2] && artistInfo.image[2]['#text']) {
+                    image = artistInfo.image[2]['#text'];
+                }
                     return {
                         name: artist.name,
                         playcount: artist.playcount,
@@ -101,7 +104,7 @@ async function lfmGetTop(lastFMUser, period, type) {
             if(data.topalbums) {
                 // console.log('albums');
                 return Promise.all(data.topalbums.album.map(async (album) => {
-                    // if (album&& album.image && album.image[2]['#text']) albumImage = album.image[2]['#text'];
+                    if (album && album.image && album.image[2]['#text']) image = album.image[2]['#text'];
                     return {
                         name: album.name,
                         playcount: album.playcount,

@@ -6,7 +6,7 @@ const FlexContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
-  max-width: 800px;
+  max-width: 400px;
   margin-top: 3rem;
 `
 
