@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-const Navbar = ({ children }) => {
+const Navbar = ({ children, username }) => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => setIsActive(!isActive);
@@ -30,7 +30,7 @@ const Navbar = ({ children }) => {
               Home
             </Link>
 
-            <Link className="navbar-item" href="/dashboard">
+            <Link className="navbar-item" href={username ? `/dashboard?username=${username}` : '/'}>
               Dashboard
             </Link>
 

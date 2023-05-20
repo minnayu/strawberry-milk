@@ -21,12 +21,12 @@ export default function FriendActivity({ userData }) {
                     <TrackArtist class="has-text-primary">
                       {friend.npArtist}
                     </TrackArtist>
+                    {friend.nowplaying ? (
+                      <progress className="progress is-link mt-3 mr-4" max="100">45%</progress>
+                    ) : (
+                      <p></p>
+                    )}
                   </FriendWrapper>
-                  {friend.nowplaying ? (
-                    <progress className="progress is-link mt-3 ml-4" max="100">45%</progress>
-                  ) : (
-                    <p></p>
-                  )}
                 </div>
               </div>
           ))

@@ -1,5 +1,3 @@
-/** @type {import('next').NextConfig} */
-
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
@@ -8,6 +6,6 @@ const nextConfig = {
   env: {
     LASTFM_TOKEN: process.env.LASTFM_TOKEN
   }
-} 
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

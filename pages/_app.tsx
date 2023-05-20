@@ -3,6 +3,7 @@ import { ThemeProvider, DefaultTheme } from 'styled-components'
 import GlobalStyle from '../components/globalstyles'
 import Navbar from '../components/Navbar';
 import "../mybulma/css/mystyles.css"
+import { useState } from 'react';
 
 const theme: DefaultTheme = {
   colors: {
@@ -12,14 +13,23 @@ const theme: DefaultTheme = {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [username, setUsername] = useState('');
+
+  const handleSetUsername = (username: string) => {
+    setUsername(username);
+  };
+
+  if (typeof window !== 'undefined') {
+    (window as any).handleSetUsername = handleSetUsername;
+  }
   return (
     <>
-      <Navbar>
+      <Navbar username={username}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Component {...pageProps} />
+          <Component {...pageProps} handleSetUsername={handleSetUsername} />
         </ThemeProvider>
       </Navbar>
     </>
-  )
+  );
 }

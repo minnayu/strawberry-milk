@@ -12,6 +12,10 @@ export default function Home() {
 
   const handleSetUsernameClick = async () => {
     // Navigate to Dashboard page with the username as a query parameter
+    if (typeof window !== 'undefined') {
+      window.handleSetUsername(username);
+    }
+
     router.push({
       pathname: '/dashboard',
       query: { username: username },
