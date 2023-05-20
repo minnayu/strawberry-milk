@@ -119,6 +119,7 @@ async function lfmGetTop(lastFMUser, period, type) {
 async function lfmGetFriends(lastFMUser) {
     let response = await fetch(`${rootURL}/?method=user.getfriends&user=${lastFMUser}&api_key=${apiKey}&limit=10&page=1&format=json`);
     let data = await response.json();
+    if (!data.friends) return;
     return Promise.all(
         data.friends.user.map(async (friend) => {
         let friendNowPlaying = await lfmGetNowPlaying(friend.name);
